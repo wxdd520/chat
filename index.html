@@ -325,7 +325,7 @@
     <span id="login-status">输入密码即可配对</span>
   </div>
   <button id="login-btn">进入房间</button>
-  <div class="tip-box">💡 你和对方输入<strong>相同的密码</strong>就能聊天<br>支持文字、表情、图片</div>
+  <div class="tip-box">💡 你和对方输入<strong>相同的密码</strong>就能聊天<br>支持文字、表情、图片（不限制大小）</div>
 </div>
 
 <div id="chat-screen" class="hidden">
@@ -430,7 +430,7 @@
   let pendingImage = null; // { dataUrl, name, file }
   let emojiOpen = false;
 
-  const MAX_IMG_SIZE = 512 * 1024; // 512KB
+  const MAX_IMG_SIZE = 10 * 1024 * 1024; // 10MB 软限制
 
   // ── Helpers ──
   function now() { return Date.now(); }
@@ -516,8 +516,7 @@
     e.target.value = '';
 
     if (file.size > MAX_IMG_SIZE) {
-      showToast(`⚠️ 图片太大（最大 ${MAX_IMG_SIZE/1024}KB），请压缩后再发`);
-      return;
+      showToast(`⚠️ 图片超过 10MB，中转服务可能无法传递`);
     }
 
     const reader = new FileReader();
@@ -610,10 +609,9 @@
     if (!client || !client.connected) return;
     try {
       const json = JSON.stringify(data);
-      // MQTT payload size check (EMQX limit ~1MB, keep safe under 800KB)
-      if (json.length > 800 * 1024) {
-        showToast('⚠️ 消息太大，无法发送');
-        return;
+      // MQTT 公共中转有大小限制，过大可能失败
+      if (json.length > 900 * 1024) {
+        showToast('⚠️ 消息接近中转限制（约1MB），继续发送可能失败');
       }
       client.publish(roomTopic, json, { qos: 1 });
     } catch(e) { /* ignore */ }
