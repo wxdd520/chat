@@ -22,7 +22,7 @@
     --radius: 16px;
     --radius-sm: 10px;
     --shadow: 0 8px 32px rgba(0,0,0,0.45);
-    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", sans-serif;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
   }
 
   html, body { height: 100%; overflow: hidden; }
@@ -36,123 +36,60 @@
     min-height: 100vh;
   }
 
-  /* ── Login Screen ── */
   #login-screen {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    display: flex; flex-direction: column; align-items: center; gap: 20px;
     padding: 44px 40px 36px;
-    background: var(--surface);
-    border-radius: var(--radius);
+    background: var(--surface); border-radius: var(--radius);
     box-shadow: var(--shadow);
     border: 1px solid rgba(255,255,255,0.06);
-    width: 400px;
-    max-width: 92vw;
-    transition: opacity .3s, transform .3s;
+    width: 400px; max-width: 92vw;
   }
   #login-screen.hidden { display: none; }
 
   .logo-row { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
   .logo-row .lock { font-size: 32px; }
-  .logo-row h1 { font-size: 20px; font-weight: 600; letter-spacing: 0.3px; }
+  .logo-row h1 { font-size: 20px; font-weight: 600; }
 
-  .subtitle {
-    font-size: 14px; color: var(--text-dim);
-    text-align: center; line-height: 1.5;
-  }
+  .subtitle { font-size: 14px; color: var(--text-dim); text-align: center; line-height: 1.5; }
   .subtitle strong { color: var(--accent); font-weight: 500; }
 
-  .input-group {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .input-group label {
-    font-size: 12px;
-    color: var(--text-dim);
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-left: 2px;
-  }
+  .input-group { width: 100%; display: flex; flex-direction: column; gap: 4px; }
+  .input-group label { font-size: 12px; color: var(--text-dim); font-weight: 500; letter-spacing: 0.5px; margin-left: 2px; }
   .input-group input {
-    width: 100%;
-    padding: 12px 16px;
-    border-radius: var(--radius-sm);
-    border: 1px solid rgba(255,255,255,0.07);
-    background: var(--bg);
-    color: var(--text);
-    font-size: 15px;
-    outline: none;
+    width: 100%; padding: 12px 16px; border-radius: var(--radius-sm);
+    border: 1px solid rgba(255,255,255,0.07); background: var(--bg);
+    color: var(--text); font-size: 15px; outline: none; font-family: var(--font);
     transition: border-color .2s, box-shadow .2s;
-    font-family: var(--font);
   }
-  .input-group input:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-glow);
-  }
+  .input-group input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
   .input-group input::placeholder { color: rgba(136,136,170,0.5); }
 
   #login-btn {
-    width: 100%;
-    padding: 13px;
-    border: none;
-    border-radius: var(--radius-sm);
-    background: var(--bubble-self);
-    color: #fff;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background .2s, transform .1s, opacity .2s;
-    margin-top: 4px;
+    width: 100%; padding: 13px; border: none; border-radius: var(--radius-sm);
+    background: var(--bubble-self); color: #fff;
+    font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 4px;
+    transition: background .2s, transform .1s;
   }
   #login-btn:hover { background: #5f59e8; }
   #login-btn:active { transform: scale(0.97); }
-  #login-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+  #login-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-  .status-line {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    color: var(--text-dim);
-    width: 100%;
-    justify-content: center;
-    min-height: 20px;
-  }
-  .status-line .spinner {
-    width: 14px; height: 14px;
-    border: 2px solid var(--text-dim);
-    border-top-color: var(--accent);
-    border-radius: 50%;
-    animation: spin .8s linear infinite;
-    display: none;
-  }
+  .status-line { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-dim); width: 100%; justify-content: center; min-height: 20px; }
+  .status-line .spinner { width: 14px; height: 14px; border: 2px solid var(--text-dim); border-top-color: var(--accent); border-radius: 50%; animation: spin .8s linear infinite; display: none; }
   .status-line .spinner.show { display: inline-block; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
   .tip-box {
-    width: 100%;
-    padding: 10px 14px;
-    background: rgba(124,124,240,0.08);
-    border: 1px solid rgba(124,124,240,0.15);
-    border-radius: var(--radius-sm);
-    font-size: 12px;
-    color: var(--text-dim);
-    line-height: 1.5;
-    text-align: center;
+    width: 100%; padding: 10px 14px;
+    background: rgba(124,124,240,0.08); border: 1px solid rgba(124,124,240,0.15);
+    border-radius: var(--radius-sm); font-size: 12px; color: var(--text-dim); text-align: center; line-height: 1.5;
   }
-  .tip-box strong { color: var(--accent); }
 
-  /* ── Chat Screen ── */
   #chat-screen {
     display: flex; flex-direction: column;
     width: 780px; max-width: 96vw;
     height: 88vh; max-height: 720px;
-    background: var(--surface);
-    border-radius: var(--radius);
+    background: var(--surface); border-radius: var(--radius);
     box-shadow: var(--shadow);
     border: 1px solid rgba(255,255,255,0.06);
     overflow: hidden;
@@ -161,48 +98,24 @@
 
   #chat-header {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 14px 22px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 14px 22px; border-bottom: 1px solid rgba(255,255,255,0.06);
     flex-shrink: 0; flex-wrap: wrap; gap: 6px;
   }
   .header-left { display: flex; align-items: center; gap: 12px; }
   .header-left .status-badge {
     display: flex; align-items: center; gap: 5px;
-    font-size: 12px; padding: 4px 10px;
-    border-radius: 20px;
+    font-size: 12px; padding: 4px 10px; border-radius: 20px;
   }
-  .header-left .status-badge.online {
-    background: rgba(34,197,94,0.15);
-    color: var(--success);
-  }
-  .header-left .status-badge.offline {
-    background: rgba(239,68,68,0.15);
-    color: var(--danger);
-  }
-  .header-left .status-badge .dot {
-    width: 7px; height: 7px; border-radius: 50%;
-    display: inline-block;
-  }
-  .header-left .status-badge.online .dot { background: var(--success); animation: pulse-dot 1.8s infinite; }
-  .header-left .status-badge.offline .dot { background: var(--danger); }
-  @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
+  .header-left .status-badge.online { background: rgba(34,197,94,0.15); color: var(--success); }
+  .header-left .status-badge.offline { background: rgba(239,68,68,0.15); color: var(--danger); }
+  .header-left .status-badge .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .header-left .status-badge.online .dot { background: var(--success); }\n  .header-left .status-badge.offline .dot { background: var(--danger); }
   .header-left h2 { font-size: 16px; font-weight: 600; }
-  .header-left .room-tag {
-    font-size: 12px; color: var(--text-dim);
-    background: var(--bg); padding: 3px 10px; border-radius: 12px;
-  }
+  .header-left .room-tag { font-size: 12px; color: var(--text-dim); background: var(--bg); padding: 3px 10px; border-radius: 12px; }
 
   .header-right { display: flex; align-items: center; gap: 10px; }
   .header-right .user-label { font-size: 13px; color: var(--text-dim); }
   .header-right .user-label .name { color: var(--accent); font-weight: 500; }
-  .header-right .peer-label {
-    font-size: 12px; color: var(--text-dim);
-    background: var(--bg); padding: 4px 10px; border-radius: 12px;
-    display: flex; align-items: center; gap: 4px;
-  }
-  .header-right .peer-label .peer-name { color: var(--success); font-weight: 500; }
-  .header-right .peer-label .waiting { color: var(--text-dim); font-style: italic; }
 
   #logout-btn {
     background: none; border: 1px solid rgba(255,255,255,0.08);
@@ -211,7 +124,6 @@
   }
   #logout-btn:hover { border-color: var(--danger); color: var(--danger); }
 
-  /* ── Messages ── */
   #messages-container {
     flex: 1; overflow-y: auto; padding: 16px 20px;
     display: flex; flex-direction: column; gap: 5px;
@@ -221,63 +133,35 @@
   #messages-container::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.07); border-radius: 10px; }
   #messages-container::-webkit-scrollbar-track { background: transparent; }
 
-  .msg-system {
-    text-align: center; font-size: 12px; color: var(--text-dim);
-    padding: 4px 0; margin: 2px 0;
-  }
-  .msg-system span {
-    background: var(--surface2); padding: 3px 14px; border-radius: 20px;
-  }
+  .msg-system { text-align: center; font-size: 12px; color: var(--text-dim); padding: 4px 0; margin: 2px 0; }
+  .msg-system span { background: var(--surface2); padding: 3px 14px; border-radius: 20px; }
 
-  .msg-row {
-    display: flex; flex-direction: column;
-    max-width: 75%; animation: msg-in .25s ease-out;
-  }
-  @keyframes msg-in { from{opacity:0;transform:translateY(8px) translateX(var(--tx,0)) scale(0.96)} to{opacity:1;transform:translateY(0) translateX(0) scale(1)} }
-  .msg-row.self { align-self: flex-end; align-items: flex-end; --tx: 10px; }
-  .msg-row.other { align-self: flex-start; align-items: flex-start; --tx: -10px; }
+  .msg-row { display: flex; flex-direction: column; max-width: 75%; animation: msg-in .25s ease-out; }
+  @keyframes msg-in { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+  .msg-row.self { align-self: flex-end; align-items: flex-end; }
+  .msg-row.other { align-self: flex-start; align-items: flex-start; }
 
-  .msg-meta {
-    font-size: 11px; color: var(--text-dim);
-    margin: 0 6px 2px 6px; display: flex; gap: 6px;
-  }
+  .msg-meta { font-size: 11px; color: var(--text-dim); margin: 0 6px 2px 6px; display: flex; gap: 6px; }
   .msg-meta .author { font-weight: 500; }
   .msg-row.self .msg-meta .author { color: var(--accent); }
 
-  .bubble {
-    padding: 9px 15px; border-radius: 16px;
-    line-height: 1.5; font-size: 15px; word-wrap: break-word;
-  }
-  .msg-row.self .bubble {
-    background: var(--bubble-self);
-    border-bottom-right-radius: 4px;
-  }
-  .msg-row.other .bubble {
-    background: var(--bubble-other);
-    border-bottom-left-radius: 4px;
-  }
-  .bubble .time {
-    font-size: 10px; opacity: 0.45;
-    margin-left: 8px; white-space: nowrap;
-  }
+  .bubble { padding: 9px 15px; border-radius: 16px; line-height: 1.5; font-size: 15px; word-wrap: break-word; }
+  .msg-row.self .bubble { background: var(--bubble-self); border-bottom-right-radius: 4px; }
+  .msg-row.other .bubble { background: var(--bubble-other); border-bottom-left-radius: 4px; }
+  .bubble .time { font-size: 10px; opacity: 0.45; margin-left: 8px; white-space: nowrap; }
 
-  #typing-indicator {
-    font-size: 12px; color: var(--text-dim);
-    padding: 2px 20px 6px; min-height: 20px; flex-shrink: 0;
-  }
+  #typing-indicator { font-size: 12px; color: var(--text-dim); padding: 2px 20px 6px; min-height: 20px; flex-shrink: 0; }
   #typing-indicator:empty { opacity: 0; }
 
   #input-area {
     display: flex; align-items: center; gap: 10px;
-    padding: 10px 20px 14px;
-    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 10px 20px 14px; border-top: 1px solid rgba(255,255,255,0.06);
     flex-shrink: 0;
   }
   #msg-input {
     flex: 1; padding: 11px 16px; border-radius: 24px;
     border: 1px solid rgba(255,255,255,0.07); background: var(--bg);
-    color: var(--text); font-size: 15px; outline: none;
-    font-family: var(--font);
+    color: var(--text); font-size: 15px; outline: none; font-family: var(--font);
   }
   #msg-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
   #msg-input::placeholder { color: rgba(136,136,170,0.4); }
@@ -285,19 +169,15 @@
 
   #send-btn {
     width: 42px; height: 42px; border-radius: 50%; border: none;
-    background: var(--bubble-self); color: #fff;
-    font-size: 18px; cursor: pointer; display: flex;
-    align-items: center; justify-content: center;
-    flex-shrink: 0; transition: background .2s, transform .1s, opacity .2s;
+    background: var(--bubble-self); color: #fff; font-size: 18px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; transition: background .2s, transform .1s;
   }
   #send-btn:hover { background: #5f59e8; }
   #send-btn:active { transform: scale(0.9); }
-  #send-btn:disabled { opacity: 0.25; cursor: not-allowed; transform: none; }
+  #send-btn:disabled { opacity: 0.25; cursor: not-allowed; }
 
-  #emoji-btn {
-    background: none; border: none; font-size: 20px; cursor: pointer;
-    padding: 4px; opacity: 0.45; flex-shrink: 0; line-height: 1;
-  }
+  #emoji-btn { background: none; border: none; font-size: 20px; cursor: pointer; padding: 4px; opacity: 0.45; flex-shrink: 0; line-height: 1; }
   #emoji-btn:hover { opacity: 1; }
 
   @media (max-width: 600px) {
@@ -314,8 +194,7 @@
     transform: translateX(-50%) translateY(-80px);
     background: var(--surface); color: var(--text);
     padding: 10px 22px; border-radius: var(--radius-sm);
-    box-shadow: var(--shadow);
-    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: var(--shadow); border: 1px solid rgba(255,255,255,0.06);
     font-size: 14px; z-index: 100;
     transition: transform .4s cubic-bezier(0.34,1.56,0.64,1), opacity .3s;
     opacity: 0; pointer-events: none;
@@ -327,41 +206,25 @@
 
 <div id="toast"></div>
 
-<!-- ── Login ── -->
 <div id="login-screen">
-  <div class="logo-row">
-    <span class="lock">🔐</span>
-    <h1>密聊 · 密码配对</h1>
-  </div>
-  <p class="subtitle">
-    输入相同的「房间密码」即可配对聊天<br>
-    <strong>端到端直连</strong>，不经过任何服务器
-  </p>
-
+  <div class="logo-row"><span class="lock">🔐</span><h1>密聊 · 密码配对</h1></div>
+  <p class="subtitle">输入相同的「房间密码」即可聊天<br><strong>公共中转</strong>，任何网络都能连</p>
   <div class="input-group">
     <label>你的昵称</label>
     <input type="text" id="nick-input" placeholder="输入昵称..." maxlength="16" autofocus>
   </div>
-
   <div class="input-group">
     <label>房间密码</label>
     <input type="text" id="room-input" placeholder="和对方约定一个密码..." maxlength="20">
   </div>
-
   <div class="status-line">
     <span class="spinner" id="login-spinner"></span>
     <span id="login-status">输入密码即可配对</span>
   </div>
-
-  <button id="login-btn">创建 / 加入房间</button>
-
-  <div class="tip-box">
-    💡 你和对方输入<strong>相同的密码</strong>就能自动配对聊天。<br>
-    结束聊天关闭页面即可。
-  </div>
+  <button id="login-btn">进入房间</button>
+  <div class="tip-box">💡 你和对方输入<strong>相同的密码</strong>就能聊天<br>消息通过公共中转服务传递</div>
 </div>
 
-<!-- ── Chat ── -->
 <div id="chat-screen" class="hidden">
   <div id="chat-header">
     <div class="header-left">
@@ -370,21 +233,16 @@
         <span id="conn-status-text">未连接</span>
       </div>
       <h2>密聊</h2>
-      <span class="room-tag" id="room-tag-display"># 房间号</span>
+      <span class="room-tag" id="room-tag-display"># ...</span>
     </div>
     <div class="header-right">
-      <div class="peer-label" id="peer-label">
-        <span>👤</span>
-        <span class="waiting" id="peer-name-display">等待对方加入...</span>
-      </div>
+      <span class="user-label" id="online-count">👤 0 人在线</span>
       <span class="user-label">你 · <span class="name" id="self-name-display"></span></span>
       <button id="logout-btn">退出</button>
     </div>
   </div>
-
   <div id="messages-container"></div>
   <div id="typing-indicator"></div>
-
   <div id="input-area">
     <button id="emoji-btn" title="表情">😊</button>
     <input type="text" id="msg-input" placeholder="输入消息..." maxlength="500" disabled>
@@ -392,12 +250,12 @@
   </div>
 </div>
 
-<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="https://unpkg.com/mqtt@5.10.4/dist/mqtt.min.js"></script>
 <script>
 (function() {
   'use strict';
 
-  // ── DOM refs ──
+  // ── DOM ──
   const loginScreen    = document.getElementById('login-screen');
   const chatScreen     = document.getElementById('chat-screen');
   const nickInput      = document.getElementById('nick-input');
@@ -406,8 +264,6 @@
   const loginSpinner   = document.getElementById('login-spinner');
   const loginStatus    = document.getElementById('login-status');
   const selfNameDisplay= document.getElementById('self-name-display');
-  const peerNameDisplay= document.getElementById('peer-name-display');
-  const peerLabel      = document.getElementById('peer-label');
   const messagesContainer = document.getElementById('messages-container');
   const msgInput       = document.getElementById('msg-input');
   const sendBtn        = document.getElementById('send-btn');
@@ -418,83 +274,185 @@
   const connStatus     = document.getElementById('conn-status');
   const connStatusText = document.getElementById('conn-status-text');
   const roomTagDisplay = document.getElementById('room-tag-display');
+  const onlineCount    = document.getElementById('online-count');
 
   // ── State ──
-  let nickname   = '';
-  let roomPass   = '';
-  let roomId     = '';
-  let peer       = null;
-  let conn       = null;      // DataConnection to the other peer
-  let isHost     = false;     // true = we own the room ID
-  let connected  = false;
-  let isTyping   = false;
-  let typingTimeout = null;
-  let reconnectTimer = null;
-  let peerName   = '';        // the OTHER person's name
+  let nickname = '', roomPass = '', roomTopic = '';
+  let client = null;
+  let connected = false;
+  let isTyping = false, typingTimeout = null;
+  let heartbeatTimer = null;
+  let userId = crypto.randomUUID().slice(0, 8);
 
   // ── Helpers ──
   function now() { return Date.now(); }
+  function fmtTime(ts) { const d=new Date(ts); return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'); }
+  function esc(s) { const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+  function getColor(n) { let h=0; for(let i=0;i<n.length;i++) h=n.charCodeAt(i)+((h<<5)-h); return `hsl(${Math.abs(h%360)},55%,50%)`; }
+  function showToast(msg, dur) { toastEl.textContent=msg; toastEl.classList.add('show'); clearTimeout(toastEl._hide); toastEl._hide=setTimeout(()=>toastEl.classList.remove('show'), dur||2500); }
+  function scrollBottom() { requestAnimationFrame(()=>messagesContainer.scrollTop=messagesContainer.scrollHeight); }
+  function setConn(on) { connected=on; connStatus.className='status-badge '+(on?'online':'offline'); connStatusText.textContent=on?'已连接':'未连接'; msgInput.disabled=!on; sendBtn.disabled=!on; }
 
-  function fmtTime(ts) {
-    const d = new Date(ts);
-    return d.getHours().toString().padStart(2,'0') + ':' +
-           d.getMinutes().toString().padStart(2,'0');
-  }
-
-  function esc(str) {
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
-  }
-
-  function getColor(name) {
-    let h = 0;
-    for (let i = 0; i < name.length; i++) h = name.charCodeAt(i) + ((h << 5) - h);
-    return `hsl(${Math.abs(h % 360)}, 55%, 50%)`;
-  }
-
-  function showToast(msg, duration) {
-    toastEl.textContent = msg;
-    toastEl.classList.add('show');
-    clearTimeout(toastEl._hide);
-    toastEl._hide = setTimeout(() => toastEl.classList.remove('show'), duration || 2500);
-  }
-
-  function scrollBottom() {
-    requestAnimationFrame(() => {
-      messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    });
-  }
-
-  function setConnStatus(online) {
-    connStatus.className = 'status-badge ' + (online ? 'online' : 'offline');
-    connStatusText.textContent = online ? '已连接' : '未连接';
-    connected = online;
-    msgInput.disabled = !online;
-    sendBtn.disabled = !online;
-  }
-
-  // ── Simple deterministic hash for room ID ──
   function hashRoom(pass) {
-    let h = 0;
-    for (let i = 0; i < pass.length; i++) {
-      h = ((h << 5) - h) + pass.charCodeAt(i);
-      h |= 0; // Convert to 32-bit int
-    }
-    // Make it a positive hex string, prefixed
-    const hex = Math.abs(h).toString(16).padStart(8, '0');
-    return 'chat-' + hex;
+    let h=0; for(let i=0;i<pass.length;i++) h=((h<<5)-h)+pass.charCodeAt(i), h|=0;
+    return 'chat/'+Math.abs(h).toString(16).padStart(8,'0');
   }
 
-  // ── Connection helpers ──
-  function sendMsgData(type, payload) {
-    if (!conn || !conn.open) return;
+  // ── MQTT ──
+  function connectMQTT() {
+    loginStatus.textContent = '⏳ 连接中...';
+    loginSpinner.classList.add('show');
+    loginBtn.disabled = true;
+
+    const brokerUrl = 'wss://broker.emqx.io:8084/mqtt';
+
     try {
-      conn.send({ type, payload, ts: now() });
+      client = mqtt.connect(brokerUrl, {
+        clientId: 'chat_' + userId + '_' + Math.random().toString(36).slice(2,6),
+        clean: true,
+        reconnectPeriod: 3000,
+        connectTimeout: 10000,
+      });
+
+      client.on('connect', () => {
+        loginSpinner.classList.remove('show');
+        loginStatus.textContent = '🟢 已连接，加入房间...';
+
+        // Subscribe to room topic
+        roomTopic = hashRoom(roomPass);
+        roomTagDisplay.textContent = '# ' + roomTopic;
+
+        client.subscribe(roomTopic, { qos: 1 }, (err) => {
+          if (err) {
+            showToast('⚠️ 订阅房间失败');
+            return;
+          }
+
+          // Send join message
+          publish({
+            type: 'join',
+            userId: userId,
+            name: nickname,
+            time: now()
+          });
+
+          // Send heartbeat every 5s
+          heartbeatTimer = setInterval(() => {
+            publish({ type: 'hb', userId, name: nickname, time: now() });
+          }, 5000);
+
+          // Switch to chat
+          loginScreen.classList.add('hidden');
+          chatScreen.classList.remove('hidden');
+          setConn(true);
+          selfNameDisplay.textContent = nickname;
+          msgInput.focus();
+
+          addSystem('🟢 你已加入房间');
+        });
+      });
+
+      client.on('message', (topic, payload) => {
+        try {
+          const data = JSON.parse(payload.toString());
+          handleMessage(data);
+        } catch(e) { /* ignore bad json */ }
+      });
+
+      client.on('reconnect', () => {
+        setConn(false);
+      });
+
+      client.on('close', () => {
+        setConn(false);
+      });
+
+      client.on('error', (err) => {
+        console.error('MQTT error:', err);
+        loginSpinner.classList.remove('show');
+        loginStatus.textContent = '⚠️ 连接失败，重试中...';
+        loginBtn.disabled = true;
+        loginBtn.textContent = '连接中...';
+      });
+
+    } catch(e) {
+      loginSpinner.classList.remove('show');
+      loginStatus.textContent = '⚠️ 无法连接: ' + e.message;
+      loginBtn.disabled = false;
+      loginBtn.textContent = '重试';
+    }
+  }
+
+  // ── Publish ──
+  function publish(data) {
+    if (!client || !client.connected) return;
+    try {
+      client.publish(roomTopic, JSON.stringify(data), { qos: 1 });
     } catch(e) { /* ignore */ }
   }
 
-  // ── System message in chat ──
+  // ── Handle incoming MQTT messages ──
+  const onlineUsers = {};  // userId -> { name, lastSeen }
+
+  function handleMessage(data) {
+    if (data.userId === userId) return; // skip self
+
+    switch (data.type) {
+      case 'join':
+        onlineUsers[data.userId] = { name: data.name, lastSeen: now() };
+        addSystem(`🟢 ${data.name} 加入了聊天`);
+        updateOnlineCount();
+        break;
+
+      case 'leave':
+        if (onlineUsers[data.userId]) {
+          addSystem(`🔴 ${onlineUsers[data.userId].name} 离开了聊天`);
+          delete onlineUsers[data.userId];
+          updateOnlineCount();
+        }
+        break;
+
+      case 'hb':
+        onlineUsers[data.userId] = { name: data.name, lastSeen: now() };
+        updateOnlineCount();
+        break;
+
+      case 'msg':
+        appendMessage(data.from, data.text, data.time);
+        break;
+
+      case 'typing':
+        if (data.isTyping) {
+          const n = onlineUsers[data.userId]?.name || '对方';
+          typingIndicator.textContent = `${n} 正在输入...`;
+          clearTimeout(typingIndicator._timer);
+          typingIndicator._timer = setTimeout(() => { typingIndicator.textContent = ''; }, 3000);
+        } else {
+          typingIndicator.textContent = '';
+          clearTimeout(typingIndicator._timer);
+        }
+        break;
+
+      case 'sys':
+        addSystem(data.text);
+        break;
+    }
+  }
+
+  // ── Cleanup stale users ──
+  function updateOnlineCount() {
+    const nowTime = now();
+    for (const [id, u] of Object.entries(onlineUsers)) {
+      if (nowTime - u.lastSeen > 12000) {
+        addSystem(`🔴 ${u.name} 离开了聊天`);
+        delete onlineUsers[id];
+      }
+    }
+    const count = Object.keys(onlineUsers).length;
+    onlineCount.textContent = `👤 ${count} 人在线`;
+  }
+
+  // ── UI ──
   function addSystem(text) {
     const el = document.createElement('div');
     el.className = 'msg-system';
@@ -503,312 +461,100 @@
     scrollBottom();
   }
 
-  // ── Append message bubble ──
   function appendMessage(from, text, time) {
     const isSelf = from === nickname;
     const row = document.createElement('div');
     row.className = `msg-row ${isSelf ? 'self' : 'other'}`;
-
     const meta = document.createElement('div');
     meta.className = 'msg-meta';
     meta.innerHTML = `<span class="author" style="color:${getColor(from)}">${esc(from)}</span>`;
-
     const bubble = document.createElement('div');
     bubble.className = 'bubble';
-    bubble.innerHTML = `${esc(text)} <span class="time">${fmtTime(time || now())}</span>`;
-
+    bubble.innerHTML = `${esc(text)} <span class="time">${fmtTime(time||now())}</span>`;
     row.appendChild(meta);
     row.appendChild(bubble);
     messagesContainer.appendChild(row);
     scrollBottom();
   }
 
-  // ── Handle incoming data from peer ──
-  function handlePeerData(data) {
-    if (!data || !data.type) return;
-
-    switch (data.type) {
-      case 'msg':
-        appendMessage(data.payload.from, data.payload.text, data.payload.time);
-        break;
-
-      case 'sys':
-        addSystem(data.payload.text);
-        break;
-
-      case 'typing':
-        if (data.payload.isTyping) {
-          const name = data.payload.name || peerName || '对方';
-          typingIndicator.textContent = `${name} 正在输入...`;
-          clearTimeout(typingIndicator._timer);
-          typingIndicator._timer = setTimeout(() => { typingIndicator.textContent = ''; }, 2500);
-        } else {
-          typingIndicator.textContent = '';
-          clearTimeout(typingIndicator._timer);
-        }
-        break;
-
-      case 'peer-name':
-        peerName = data.payload.name;
-        peerNameDisplay.textContent = peerName;
-        if (connected) {
-          addSystem(`🟢 ${peerName} 已加入聊天`);
-        }
-        break;
-    }
-  }
-
-  // ── Become HOST (create room) ──
-  function becomeHost() {
-    isHost = true;
-    loginStatus.textContent = '⏳ 创建房间中...';
-    loginSpinner.classList.add('show');
-
-    peer = new Peer(roomId, {
-      config: {
-        iceServers: [
-          { urls: 'stun:stun.l.google.com:19302' },
-          { urls: 'stun:stun1.l.google.com:19302' },
-        ]
-      }
-    });
-
-    peer.on('open', (id) => {
-      loginSpinner.classList.remove('show');
-      loginStatus.textContent = '🟢 房间已创建，等待对方加入...';
-      loginBtn.disabled = true;
-      loginBtn.textContent = '等待配对中...';
-      roomInput.disabled = true;
-      nickInput.disabled = true;
-      roomTagDisplay.textContent = '# ' + roomId;
-    });
-
-    peer.on('connection', (incomingConn) => {
-      if (conn) {
-        // Already have a peer, reject
-        incomingConn.close();
-        return;
-      }
-
-      conn = incomingConn;
-      setupConnection();
-    });
-
-    peer.on('error', (err) => {
-      console.error('Peer error (host):', err);
-      if (err.type === 'unavailable-id') {
-        // Someone else got the room first — switch to guest mode
-        peer.destroy();
-        peer = null;
-        becomeGuest();
-      } else {
-        loginSpinner.classList.remove('show');
-        loginStatus.textContent = '⚠️ 连接失败: ' + (err.message || '未知错误');
-        loginBtn.disabled = false;
-        loginBtn.textContent = '重试';
-      }
-    });
-
-    peer.on('disconnected', () => {
-      setConnStatus(false);
-      peerNameDisplay.textContent = '对方已断开';
-      addSystem('🔴 对方已断开连接');
-    });
-
-    peer.on('close', () => {
-      setConnStatus(false);
-    });
-  }
-
-  // ── Become GUEST (join existing room) ──
-  function becomeGuest() {
-    isHost = false;
-    loginStatus.textContent = '⏳ 加入房间中...';
-
-    peer = new Peer({
-      config: {
-        iceServers: [
-          { urls: 'stun:stun.l.google.com:19302' },
-          { urls: 'stun:stun1.l.google.com:19302' },
-        ]
-      }
-    });
-
-    peer.on('open', (id) => {
-      // Connect to the host
-      conn = peer.connect(roomId, {
-        reliable: true,
-        serialization: 'json',
-      });
-      setupConnection();
-    });
-
-    peer.on('error', (err) => {
-      console.error('Peer error (guest):', err);
-      loginSpinner.classList.remove('show');
-      loginStatus.textContent = '⚠️ 无法加入: ' + (err.message || '未知错误');
-      loginBtn.disabled = false;
-      loginBtn.textContent = '重试';
-    });
-  }
-
-  // ── Setup connection handlers ──
-  function setupConnection() {
-    if (!conn) return;
-
-    conn.on('open', () => {
-      loginSpinner.classList.remove('show');
-      loginScreen.classList.add('hidden');
-      chatScreen.classList.remove('hidden');
-
-      setConnStatus(true);
-      selfNameDisplay.textContent = nickname;
-
-      // Send our name to the peer
-      sendMsgData('peer-name', { name: nickname });
-
-      // If we're the guest, announce
-      if (!isHost) {
-        addSystem('🟢 已加入房间，开始聊天吧！');
-      } else {
-        // Host: the guest's name will come via peer-name message
-        addSystem('🟢 对方已加入，开始聊天吧！');
-      }
-
-      msgInput.focus();
-    });
-
-    conn.on('data', (data) => {
-      handlePeerData(data);
-    });
-
-    conn.on('close', () => {
-      setConnStatus(false);
-      peerNameDisplay.textContent = '对方已离开';
-      addSystem('🔴 对方已离开聊天');
-    });
-
-    conn.on('error', (err) => {
-      console.error('Connection error:', err);
-    });
-  }
-
-  // ── Send text message ──
   function sendMessage(text) {
     const trimmed = text.trim();
-    if (!trimmed || !conn || !conn.open) return;
-
-    sendMsgData('msg', { from: nickname, text: trimmed, time: now() });
+    if (!trimmed || !connected) return;
+    publish({ type: 'msg', from: nickname, text: trimmed, time: now() });
     appendMessage(nickname, trimmed, now());
-
     msgInput.value = '';
     msgInput.focus();
-
     if (isTyping) {
       isTyping = false;
-      sendMsgData('typing', { isTyping: false, name: nickname });
+      publish({ type: 'typing', userId, isTyping: false, name: nickname });
       clearTimeout(typingTimeout);
     }
   }
 
-  // ── Enter room ──
+  // ── Enter / Leave ──
   function enterRoom() {
     nickname = nickInput.value.trim();
     roomPass = roomInput.value.trim();
-
     if (!nickname) { showToast('请输入昵称'); nickInput.focus(); return; }
     if (!roomPass) { showToast('请输入房间密码'); roomInput.focus(); return; }
-
-    roomId = hashRoom(roomPass);
-
-    loginBtn.disabled = true;
-    loginStatus.textContent = '⏳ 连接中...';
-    loginSpinner.classList.add('show');
-
-    // Save
-    localStorage.setItem('p2pchat_nick', nickname);
-
-    // Try host first
-    becomeHost();
+    localStorage.setItem('mqttchat_nick', nickname);
+    connectMQTT();
   }
 
-  // ── Leave ──
   function leaveRoom() {
-    if (conn && conn.open) {
-      sendMsgData('sys', { text: `🔴 ${nickname} 离开了聊天` });
-      conn.close();
+    if (connected) {
+      publish({ type: 'leave', userId, name: nickname, time: now() });
     }
-    if (peer && !peer.destroyed) {
-      peer.destroy();
+    if (heartbeatTimer) { clearInterval(heartbeatTimer); heartbeatTimer = null; }
+    if (client) {
+      try { client.end(true); } catch(e) {}
+      client = null;
     }
-    conn = null;
-    peer = null;
     connected = false;
-    isHost = false;
-    peerName = '';
-
     chatScreen.classList.add('hidden');
     loginScreen.classList.remove('hidden');
     loginBtn.disabled = false;
-    loginBtn.textContent = '创建 / 加入房间';
+    loginBtn.textContent = '进入房间';
     loginStatus.textContent = '输入密码即可配对';
     loginSpinner.classList.remove('show');
-    roomInput.disabled = false;
     nickInput.disabled = false;
-    nickInput.focus();
+    roomInput.disabled = false;
     messagesContainer.innerHTML = '';
     typingIndicator.textContent = '';
-    peerNameDisplay.textContent = '等待对方加入...';
+    // Clean up online users
+    for (const id of Object.keys(onlineUsers)) delete onlineUsers[id];
+    updateOnlineCount();
   }
 
   // ── Init ──
   function init() {
-    const saved = localStorage.getItem('p2pchat_nick');
+    const saved = localStorage.getItem('mqttchat_nick');
     if (saved) nickInput.value = saved;
     nickInput.focus();
 
     loginBtn.addEventListener('click', enterRoom);
+    [nickInput, roomInput].forEach(inp => inp.addEventListener('keydown', e => { if (e.key === 'Enter') enterRoom(); }));
 
-    // Enter on key
-    const loginInputs = [nickInput, roomInput];
-    loginInputs.forEach(inp => {
-      inp.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') enterRoom();
-      });
-    });
-
-    // Send
     sendBtn.addEventListener('click', () => sendMessage(msgInput.value));
-    msgInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        sendMessage(msgInput.value);
-      }
-    });
+    msgInput.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(msgInput.value); } });
 
-    // Typing
     msgInput.addEventListener('input', () => {
-      if (!connected || !conn || !conn.open) return;
+      if (!connected) return;
       if (!isTyping && msgInput.value.trim()) {
         isTyping = true;
-        sendMsgData('typing', { isTyping: true, name: nickname });
+        publish({ type: 'typing', userId, isTyping: true, name: nickname });
       }
       clearTimeout(typingTimeout);
       typingTimeout = setTimeout(() => {
-        if (isTyping) {
-          isTyping = false;
-          sendMsgData('typing', { isTyping: false, name: nickname });
-        }
+        if (isTyping) { isTyping = false; publish({ type: 'typing', userId, isTyping: false, name: nickname }); }
       }, 1500);
       if (!msgInput.value.trim() && isTyping) {
-        isTyping = false;
-        sendMsgData('typing', { isTyping: false, name: nickname });
+        isTyping = false; publish({ type: 'typing', userId, isTyping: false, name: nickname });
         clearTimeout(typingTimeout);
       }
     });
 
-    // Emoji
-    const emojis = ['😊','😂','❤️','👍','🎉','🔥','💡','✨','😭','😍','🤔','🙏','💪','👀','🥳','😎','🤯','🫡'];
+    const emojis = ['😊','😂','❤️','👍','🎉','🔥','💡','✨','😭','😍','🤔','🙏','💪','👀','🥳','😎'];
     let ei = 0;
     emojiBtn.addEventListener('click', () => {
       if (msgInput.disabled) return;
@@ -817,19 +563,14 @@
       msgInput.dispatchEvent(new Event('input', { bubbles: true }));
     });
 
-    logoutBtn.addEventListener('click', () => {
-      if (connected) showToast('👋 已退出房间');
-      leaveRoom();
-    });
+    logoutBtn.addEventListener('click', leaveRoom);
 
-    console.log('🔐 密聊已就绪 — 输入密码即可配对');
+    // Periodic cleanup
+    setInterval(updateOnlineCount, 10000);
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
 })();
 </script>
 </body>
